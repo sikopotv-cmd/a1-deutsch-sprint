@@ -932,12 +932,21 @@ const units = [
   }
 ];
 
+const savedFlashcardMode = localStorage.getItem("a1.flashcardMode");
+const flashcardModeMigrationKey = "a1.flashcardModeDefault.v2";
+let initialFlashcardMode = savedFlashcardMode || "unitAll";
+if (localStorage.getItem(flashcardModeMigrationKey) !== "done" && (!savedFlashcardMode || savedFlashcardMode === "quick")) {
+  initialFlashcardMode = "unitAll";
+  localStorage.setItem("a1.flashcardMode", "unitAll");
+  localStorage.setItem(flashcardModeMigrationKey, "done");
+}
+
 const state = {
   unitId: localStorage.getItem("a1.activeUnit") || "unit01",
   view: localStorage.getItem("a1.activeView") || "lesson",
   flashcardIndex: 0,
   flashcardFlipped: false,
-  flashcardMode: localStorage.getItem("a1.flashcardMode") || "quick",
+  flashcardMode: initialFlashcardMode,
   quizIndex: 0,
   quizAnswered: false,
   quizFeedback: "",
@@ -1516,6 +1525,7 @@ function flashcardsView(unit) {
         </select>
         <span class="muted">${getFlashcardModeLabel()} memakai ${cards.length} kartu.</span>
       </div>
+      <p class="muted">Gunakan mode Ringkas untuk pemanasan 6 kartu, atau Semua Kartu Unit untuk deck lengkap dari Anki.</p>
       <div class="flashcard">
         <div>
           <strong>${card.front}</strong>

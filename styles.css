@@ -914,3 +914,111 @@ textarea {
     background: var(--panel);
   }
 }
+
+/* Hard mobile overflow fix */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.app-shell,
+.main-panel,
+.sidebar,
+.view,
+.grid,
+.practice-grid,
+.card,
+.module-card,
+.module-content,
+.topbar,
+.tabs,
+.unit-list {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 900px) {
+  .app-shell,
+  .main-panel,
+  .sidebar {
+    width: 100%;
+  }
+
+  .unit-list,
+  .tabs {
+    max-width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .tabs {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .module-card {
+    overflow: hidden;
+  }
+
+  .module-content {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .module-content table {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .word-bank,
+  .sentence-drop,
+  .answer-grid,
+  .article-card,
+  .flashcard,
+  textarea {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 540px) {
+  .grid,
+  .practice-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .unit-list {
+    margin-inline: -12px;
+    padding-inline: 12px;
+  }
+
+  .tabs {
+    margin-inline: -12px;
+    padding-inline: 12px;
+  }
+
+  .unit-button {
+    min-width: 148px;
+    max-width: 168px;
+  }
+
+  .module-content table {
+    display: table;
+    table-layout: fixed;
+    font-size: 12px;
+  }
+
+  .module-content th,
+  .module-content td {
+    padding: 7px;
+    word-break: break-word;
+  }
+}
