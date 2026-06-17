@@ -6,6 +6,11 @@ Web app statis untuk belajar A1 menuju target Ausbildung.
 
 Buka file `index.html` di browser.
 
+Jika sudah di-host lewat HTTPS seperti GitHub Pages, app bisa ditambahkan ke Home Screen:
+
+- Android Chrome: buka URL, tekan menu tiga titik, pilih `Install app` atau `Add to Home screen`.
+- iPad/iPhone Safari: buka URL, tekan tombol Share, pilih `Add to Home Screen`.
+
 ## Fitur MVP
 
 - Dashboard Unit 1-12.
@@ -21,8 +26,10 @@ Buka file `index.html` di browser.
 - Mode Latihan 20 Menit per unit.
 - Daily minimum checklist.
 - Progress checklist per unit.
+- PWA manifest dan service worker untuk akses cepat dari Home Screen.
 
 Semua progress disimpan di LocalStorage browser, jadi tidak perlu akun atau internet.
+Progress tersimpan per perangkat/browser. Progress di laptop dan iPad tidak otomatis sinkron.
 
 Modul penuh dimuat dari `modules.js`, hasil konversi lokal dari file `.md` Unit 1-12. Jadi app tetap bisa berjalan offline tanpa server.
 Flashcard lengkap dimuat dari `cards.js`, hasil konversi lokal dari file Anki `.tsv` Unit 1-12.
