@@ -258,6 +258,10 @@ textarea {
   padding: 28px;
 }
 
+.mobile-unit-picker {
+  display: none;
+}
+
 .topbar {
   display: flex;
   align-items: center;
@@ -827,13 +831,30 @@ textarea {
 }
 
 @media (max-width: 540px) {
+  .app-shell {
+    display: block;
+    width: 100%;
+  }
+
   .sidebar,
   .main-panel {
     padding: 12px;
   }
 
   .sidebar {
-    position: static;
+    display: none;
+  }
+
+  .mobile-unit-picker {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .mobile-unit-picker label {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
   }
 
   .brand p,

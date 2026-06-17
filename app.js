@@ -1355,24 +1355,38 @@ function renderUnits() {
     </button>
   `).join("");
 
+  const mobileUnitSelect = $("#mobileUnitSelect");
+  if (mobileUnitSelect) {
+    mobileUnitSelect.innerHTML = units.map((unit) => `
+      <option value="${unit.id}" ${unit.id === state.unitId ? "selected" : ""}>${unit.code} - ${unit.subtitle}</option>
+    `).join("");
+    mobileUnitSelect.onchange = () => {
+      switchUnit(mobileUnitSelect.value);
+    };
+  }
+
   document.querySelectorAll("[data-unit]").forEach((button) => {
     button.addEventListener("click", () => {
-      stopPracticeTimer();
-      state.unitId = button.dataset.unit;
-      state.flashcardIndex = 0;
-      state.flashcardFlipped = false;
-      state.quizIndex = 0;
-      state.quizAnswered = false;
-      state.quizFeedback = "";
-      state.builderIndex = 0;
-      state.builderAnswered = false;
-      state.builderFeedback = "";
-      state.selectedWords = [];
-      state.practiceSecondsLeft = 20 * 60;
-      save("a1.activeUnit", state.unitId);
-      render();
+      switchUnit(button.dataset.unit);
     });
   });
+}
+
+function switchUnit(unitId) {
+  stopPracticeTimer();
+  state.unitId = unitId;
+  state.flashcardIndex = 0;
+  state.flashcardFlipped = false;
+  state.quizIndex = 0;
+  state.quizAnswered = false;
+  state.quizFeedback = "";
+  state.builderIndex = 0;
+  state.builderAnswered = false;
+  state.builderFeedback = "";
+  state.selectedWords = [];
+  state.practiceSecondsLeft = 20 * 60;
+  save("a1.activeUnit", state.unitId);
+  render();
 }
 
 function renderTabs() {
