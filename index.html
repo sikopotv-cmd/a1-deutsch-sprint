@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>A1 Deutsch Sprint</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">A1</span>
+          <div>
+            <h1>Deutsch Sprint</h1>
+            <p>Ausbildung track</p>
+          </div>
+        </div>
+
+        <nav class="unit-list" id="unitList" aria-label="Daftar unit"></nav>
+
+        <section class="daily-panel">
+          <h2>Daily Minimum</h2>
+          <label><input type="checkbox" data-daily="duolingo"> Duolingo 10 menit</label>
+          <label><input type="checkbox" data-daily="anki"> Anki review</label>
+          <label><input type="checkbox" data-daily="lesson"> Materi utama</label>
+          <label><input type="checkbox" data-daily="output"> Speaking / writing</label>
+          <button class="ghost-button" id="resetDaily" type="button">Reset hari ini</button>
+        </section>
+      </aside>
+
+      <section class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Target: A1 kuat menuju B1</p>
+            <h2 id="unitTitle">Unit</h2>
+          </div>
+          <div class="progress-card">
+            <span id="progressText">0%</span>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </header>
+
+        <div class="tabs" role="tablist" aria-label="Mode belajar">
+          <button class="tab is-active" data-view="lesson" type="button">Materi</button>
+          <button class="tab" data-view="fullModule" type="button">Modul Penuh</button>
+          <button class="tab" data-view="flashcards" type="button">Flashcards</button>
+          <button class="tab" data-view="articles" type="button">Artikel</button>
+          <button class="tab" data-view="quiz" type="button">Quiz</button>
+          <button class="tab" data-view="builder" type="button">Susun Kalimat</button>
+          <button class="tab" data-view="output" type="button">Output</button>
+          <button class="tab" data-view="dailyPractice" type="button">20 Menit</button>
+        </div>
+
+        <section id="view" class="view"></section>
+      </section>
+    </main>
+
+    <script src="modules.js"></script>
+    <script src="cards.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
